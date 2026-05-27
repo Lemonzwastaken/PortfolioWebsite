@@ -1,0 +1,15 @@
+# Blender backup files
+*.blend1
+*.blend2
+
+# Assets/materials folder
+assets/materials/
+
+# Blender temp files
+*.blend@
+/autosave/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
