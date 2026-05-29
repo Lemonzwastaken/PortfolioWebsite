@@ -2,8 +2,8 @@
 *.blend1
 *.blend2
 
-# Assets/materials folder
-assets/materials/
+# Assets folder
+assets/
 
 # Blender temp files
 *.blend@
