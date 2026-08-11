@@ -18,9 +18,9 @@ export default function Atm(props) {
     <group {...props} 
     ref={modelRef}
     dispose={null} 
-    position={[0, -2, 0]} 
+    position={[0, 10, 1]} 
     rotation={[-1.39626, -0.174533, -1.5708]} 
-    scale={0.6}>
+    scale={0.5}>
       <mesh
         castShadow
         receiveShadow

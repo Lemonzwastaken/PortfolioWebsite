@@ -5,21 +5,30 @@ import NavButton from './NavButton';
 const Navigation = () => {
 
   const angleIncrement = 360 / BtnList.length;
+  const offsetX = '-120px';
+  const offsetY = '-80px';
 
   return (
     <div className='w-full fixed h-screen flex items-center justify-center z-50 pointer-events-none'>
-      <div className='w-max flex items-center justify-between relative'>
-        {
-          BtnList.map((btn, index) => {
+      <div
+        className='relative w-0 h-0'
+        style={{ transform: `translate(${offsetX}, ${offsetY})` }}
+      >
+        <div className='w-0 h-0 animate-spin-slow'>
+          {
+            BtnList.map((btn, index) => {
 
-            const angleRad = (index * angleIncrement * Math.PI) / 180
-            const radius = 'calc(20vw - 1rem)'
-            const x = `calc(${radius}*${Math.cos(angleRad)})`;
-            const y = `calc(${radius}*${Math.sin(angleRad)})`;
+              const angleRad = (index * angleIncrement * Math.PI) / 180
+              const radius = 'calc(27vw - 1rem)'
+              const cos = Math.cos(angleRad).toFixed(4);
+              const sin = Math.sin(angleRad).toFixed(4);
+              const x = `calc(${radius}*${cos})`;
+              const y = `calc(${radius}*${sin})`;
 
-            return <NavButton key={btn.label} x={x} y={y} {...btn} />
-          })
-        }
+              return <NavButton key={btn.label} x={x} y={y} {...btn} />
+            })
+          }
+        </div>
       </div>
     </div>
   )

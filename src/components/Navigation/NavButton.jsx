@@ -28,14 +28,18 @@ const getIcon = (icon) => {
 
 const NavButton = ({ x, y, label, link, icon, newTab }) => {
     return (
-        <div
-            className="absolute cursor-pointer z-50 pointer-events-auto"
-            style={{ transform: `translate(${x}, ${y})` }}
-        >
+    <div
+        className="absolute top-0 left-0 cursor-pointer z-50 pointer-events-auto"
+        style={{ transform: `translate(-50%, -50%) translate(${x}, ${y})` }}
+    >
+        <div className="animate-spin-slow-reverse">
             <Link
                 href={link}
                 target={newTab ? '_blank' : '_self'}
-                className='text-foreground rounded-full flex items-center justify-center'
+                className='text-foreground rounded-full flex items-center justify-center
+                bg-background/20 border border-accent/30 border-solid backdrop-blur-[6px]
+                shadow-glass-inset hover:shadow-glass-sm
+                '
                 aria-label={label}
                 name={label}
             >
@@ -44,6 +48,7 @@ const NavButton = ({ x, y, label, link, icon, newTab }) => {
                 </span>
             </Link>
         </div>
+    </div>
     );
 };
 
