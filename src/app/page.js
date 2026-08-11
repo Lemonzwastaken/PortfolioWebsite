@@ -1,8 +1,8 @@
 import Image from "next/image";
 import bg from "../../public/background/home-background.png";
 import RenderModel from "@/components/RenderModel";
-import Atm from "@/components/models/Atm";
 import Navigation from "@/components/Navigation";
+import City from "@/components/models/City";
 
 export default function Home() {
   return (
@@ -21,7 +21,7 @@ export default function Home() {
 
         <div className="absolute inset-0 pointer-events-none">
           <RenderModel>
-            <Atm />
+            <City />
           </RenderModel>
         </div>
       </div>

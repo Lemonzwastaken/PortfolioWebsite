@@ -1,5 +1,4 @@
 "use client";
-
 import { Environment } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import clsx from "clsx";
@@ -22,3 +21,4 @@ const RenderModel = ({ children, className }) => {
 };
 
 export default RenderModel;
+
