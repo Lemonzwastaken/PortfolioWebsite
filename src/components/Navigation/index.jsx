@@ -10,11 +10,9 @@ const Navigation = () => {
 
   return (
     <div className='w-full fixed h-screen flex items-center justify-center z-50 pointer-events-none'>
-      <div
-        className='relative w-0 h-0'
-        style={{ transform: `translate(${offsetX}, ${offsetY})` }}
+      <div className='relative w-0 h-0' style={{ transform: `translate(${offsetX}, ${offsetY})` }}
       >
-        <div className='w-0 h-0 animate-spin-slow'>
+        <div className='w-0 h-0 animate-spin-slow hover:pause group'>
           {
             BtnList.map((btn, index) => {
 
