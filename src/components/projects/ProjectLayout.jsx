@@ -1,10 +1,14 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import Image from "next/image";
 
 const formatDate = (date) =>
   new Date(date).toLocaleDateString("en-US", { month: "short", year: "numeric" });
 
 const ProjectLayout = ({ id, name, description, date, demoLink, index }) => {
+  const [imgSrc, setImgSrc] = useState(`/projects/${id}.png`);
+
   return (
     <a
       href={demoLink}
@@ -16,11 +20,12 @@ const ProjectLayout = ({ id, name, description, date, demoLink, index }) => {
       hover:border-accent/50 hover:shadow-glass-sm hover:-translate-y-1"
     >
       <Image
-        src={`/projects/images/${id}.png`}
+        src={imgSrc}
         alt={name}
         fill
         sizes="(max-width: 768px) 100vw, 384px"
         className="object-cover transition-transform duration-500 group-hover:scale-105"
+        onError={() => setImgSrc("/projects/placeholder.png")}
       />
 
       <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/40 to-background/10" />
