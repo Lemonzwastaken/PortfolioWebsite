@@ -7,19 +7,24 @@ import Navigation from "@/components/Navigation";
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24 relative">
-      <Image src={bg} alt="background-image" fill className="object-cover object-center opacity-25" />
+      <Image
+        src={bg}
+        alt="background-image"
+        fill
+        sizes="100vw"
+        priority
+        className="object-cover object-center opacity-25 -z-10"
+      />
 
-      <div className="w-full h-screen">
+      <div className="w-full h-screen relative">
         <Navigation />
-        {<RenderModel>
-          <Atm />   
-          console.log();
-          
-        </RenderModel>}
-        
-      </div>
-    
 
+        <div className="absolute inset-0 pointer-events-none">
+          <RenderModel>
+            <Atm />
+          </RenderModel>
+        </div>
+      </div>
     </main>
   );
 }

@@ -102,7 +102,7 @@ export const BtnList = [
   {
     label: "Music",
     link: "https://open.spotify.com/artist/3xrRSYAIhqv4ijzPDXkg0c",
-    icon: "twitter",
+    icon: "music",
     newTab: true,
   },
   {
