@@ -8,19 +8,19 @@ export default function Atm(props) {
   const { nodes, materials } = useGLTF('/models/atm-transformed.glb')
   const modelRef = useRef()
 
-  useFrame((state, delta, XRFrame) => {
-
-    modelRef.current.position.y = -1.5 + Math.sin(state.clock.elapsedTime)*0.15;
-
+  useFrame((state, delta) => {
+    if (modelRef.current) {
+      modelRef.current.rotation.z += delta * 0.5 // adjust speed here
+    }
   })
 
   return (
-    <group {...props} 
+    <group {...props}
     ref={modelRef}
-    dispose={null} 
-    position={[0, 10, 1]} 
-    rotation={[-1.39626, -0.174533, -1.5708]} 
-    scale={0.5}>
+    dispose={null}
+    position={[0, -3, 0]}
+    rotation={[-1.5708, 0, -1.5708]}
+    scale={1}>
       <mesh
         castShadow
         receiveShadow

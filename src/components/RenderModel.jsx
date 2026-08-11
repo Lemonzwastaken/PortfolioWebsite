@@ -1,4 +1,3 @@
-// components/RenderModel.jsx
 "use client";
 
 import { Environment } from "@react-three/drei";
@@ -10,6 +9,7 @@ const RenderModel = ({ children, className }) => {
   return (
     <Canvas
       gl={{ alpha: true }}
+      camera={{ position: [0, 0, 15], fov: 45 }}
       className={clsx("w-full h-full relative", className)}
     >
       <Suspense fallback={null}>

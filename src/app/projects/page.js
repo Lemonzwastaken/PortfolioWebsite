@@ -1,12 +1,14 @@
 import Image from "next/image";
-import bg from "../../../public/background/projects-background.png"
+import bg from "../../../public/background/projects-background.png";
 import ProjectList from "@/components/projects";
 import { projectsData } from "../data";
-
+import RenderModel from "@/components/RenderModel";
+import Atm from "@/components/models/Atm";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24 relative">
+    <main className="flex min-h-screen flex-col relative">
+
       <Image
         src={bg}
         alt="background-image"
@@ -16,7 +18,16 @@ export default function Home() {
         className="object-cover object-center opacity-25 -z-10"
       />
 
-    <ProjectList projects={projectsData} />
+      <div className="fixed top-0 left-0 h-screen w-[30%] flex items-center justify-center pointer-events-none z-0">
+        <RenderModel>
+          <Atm />
+        </RenderModel>
+      </div>
+      
+      <div className="ml-[30%] w-[70%] px-12 py-24">
+        <ProjectList projects={projectsData} />
+      </div>
+
     </main>
   );
 }
