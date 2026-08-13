@@ -2,6 +2,7 @@ import Image from "next/image";
 import bg from "../../../../public/background/about-background.png";
 import RenderModel from "@/components/RenderModel";
 import { NoodleShop } from "@/components/models/NoodleShop";
+import AboutDetails from "@/components/About";
 
 export default function Home() {
   return (
@@ -29,6 +30,8 @@ export default function Home() {
           <p className="font-light text-foreground text-ls">The guy behind this portfolio :3</p>
         </div>
       </div>
+
+      <AboutDetails />
 
     </>
   );
