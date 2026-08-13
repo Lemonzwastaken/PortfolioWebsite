@@ -4,7 +4,13 @@ import { Canvas } from "@react-three/fiber";
 import clsx from "clsx";
 import React, { Suspense } from "react";
 
-const RenderModel = ({ children, className }) => {
+const RenderModel = ({
+  children,
+  className,
+  ambientIntensity = 0.5,
+  environmentPreset = "dawn",
+  environmentIntensity = 1,
+}) => {
   return (
     <Canvas
       gl={{ alpha: true }}
@@ -13,12 +19,11 @@ const RenderModel = ({ children, className }) => {
     >
       <Suspense fallback={null}>
         {children}
-        <Environment preset="dawn" />
+        <Environment preset={environmentPreset} environmentIntensity={environmentIntensity} />
       </Suspense>
-      <ambientLight intensity={0.5} />
+      <ambientLight intensity={ambientIntensity} />
     </Canvas>
   );
 };
 
 export default RenderModel;
-

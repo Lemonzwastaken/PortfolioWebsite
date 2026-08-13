@@ -13,7 +13,7 @@ export default function Home() {
         fill
         sizes="100vw"
         priority
-        className="object-cover object-center opacity-25 -z-10"
+        className="object-cover object-center opacity-100 -z-10"
       />
 
       <div className="w-full h-screen relative">
