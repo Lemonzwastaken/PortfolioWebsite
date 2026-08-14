@@ -5,7 +5,7 @@ import bg from "../../public/background/home-background.png";
 import RenderModel from "@/components/RenderModel";
 import Navigation from "@/components/Navigation";
 import { ArcadeUnit } from "@/components/models/ArcadeUnit";
-import ResponsiveComponent from "@/components/ResponsiveComponent";
+import { Bounds } from "@react-three/drei";
 
 export default function Home() {
   return (
@@ -24,19 +24,9 @@ export default function Home() {
 
         <div className="absolute inset-0 pointer-events-none">
           <RenderModel ambientIntensity={1} environmentIntensity={0} exposure={1} environmentPreset="sunset">
-            <ResponsiveComponent>
-              {({ size }) => {
-                const isSmall = size && size < 480;
-
-                return (
-                  <ArcadeUnit
-                    position={isSmall ? [0, -1.6, 0] : [0, -2.6, 0]}
-                    rotation={isSmall ? [0.2, 0, 0] : [0.523598776, 0, 0]}
-                    scale={isSmall ? 0.25 : 0.4}
-                  />
-                );
-              }}
-            </ResponsiveComponent>
+            <Bounds fit clip observe margin={1.2}>
+              <ArcadeUnit rotation={[0.523598776, 0, 0]} />
+            </Bounds>
           </RenderModel>
         </div>
       </div>
