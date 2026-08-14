@@ -1,8 +1,11 @@
+"use client"
+
 import Image from "next/image";
 import bg from "../../public/background/home-background.png";
 import RenderModel from "@/components/RenderModel";
 import Navigation from "@/components/Navigation";
 import { ArcadeUnit } from "@/components/models/ArcadeUnit";
+import ResponsiveComponent from "@/components/ResponsiveComponent";
 
 export default function Home() {
   return (
@@ -21,11 +24,19 @@ export default function Home() {
 
         <div className="absolute inset-0 pointer-events-none">
           <RenderModel ambientIntensity={1} environmentIntensity={0} exposure={1} environmentPreset="sunset">
-            <ArcadeUnit
-            position={[0,-2.6,0]}
-            rotation={[0.523598776 ,0,0]}
-            scale={0.4}
-            />
+            <ResponsiveComponent>
+              {({ size }) => {
+                const isSmall = size && size < 480;
+
+                return (
+                  <ArcadeUnit
+                    position={isSmall ? [0, -1.6, 0] : [0, -2.6, 0]}
+                    rotation={isSmall ? [0.2, 0, 0] : [0.523598776, 0, 0]}
+                    scale={isSmall ? 0.25 : 0.4}
+                  />
+                );
+              }}
+            </ResponsiveComponent>
           </RenderModel>
         </div>
       </div>
