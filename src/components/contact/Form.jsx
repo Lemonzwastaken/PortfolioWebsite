@@ -3,12 +3,13 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 import emailjs from "@emailjs/browser"
-
+import { Toaster, toast } from 'sonner';
 
 export default function Form() {
   const { register, handleSubmit, formState: { errors } } = useForm();
 
   const sendEmail = (templateParams) => {
+    const toastId = toast.loading("Sending your message please wait....")
     emailjs
         .send(
           process.env.NEXT_PUBLIC_SERVICE_ID,
@@ -23,10 +24,15 @@ export default function Form() {
         )
         .then(
             () => {
-                console.log("Successful")
+                toast.success("Message sent :D", {
+                  id:toastId
+                })
             },
             (error) => {
-                console.log('Failed....', error.text)
+                toast.error("There was an error sending your message :(. Please try again later", 
+                  {
+                    id:toastId
+                  })
             }
         );
   };
@@ -45,15 +51,29 @@ export default function Form() {
   console.log(errors);
 
   return (
+    <>
+    <Toaster richColors={true}/>
     <form onSubmit={handleSubmit(onSubmit)}
     className='max-w-md w-full flex flex-col items-center justify-center space-y-4'
     >
-      <input
-        type="text"
-        placeholder="name"
-        {...register("name", { required: true, maxLength: 80 })}
-        className='w-full p-2 rounded-md shadow-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 custom-bg'
-      />
+      <div className='w-full'>
+        <input
+          type="text"
+          placeholder="name"
+          {...register("name", { required: true, minLength: 3, maxLength: 80 })}
+          className='w-full p-2 rounded-md shadow-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 custom-bg'
+        />
+        {errors.name?.type === "required" && (
+          <p className='text-red-400 text-sm mt-1'>Name is required</p>
+        )}
+        {errors.name?.type === "minLength" && (
+          <p className='text-red-400 text-sm mt-1'>Name must be at least 3 characters</p>
+        )}
+        {errors.name?.type === "maxLength" && (
+          <p className='text-red-400 text-sm mt-1'>Name must be under 80 characters</p>
+        )}
+      </div>
+
       <input
         type="email"
         placeholder="Email"
@@ -78,5 +98,6 @@ export default function Form() {
       border-solid hover:shadowglass-sm backdrop-blur-sm text-foreground focus:outline-none 
       focus:ring-2 focus:ring-accent/50 cursor-pointer capitalize' type="submit" />
     </form>
+    </>
   );
 }
