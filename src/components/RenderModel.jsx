@@ -7,13 +7,14 @@ import React, { Suspense } from "react";
 const RenderModel = ({
   children,
   className,
-  ambientIntensity = 0.5,
+  ambientIntensity = 0,
   environmentPreset = "dawn",
-  environmentIntensity = 1,
+  environmentIntensity = 0,
+  exposure = 1,
 }) => {
   return (
     <Canvas
-      gl={{ alpha: true }}
+      gl={{ alpha: true, toneMappingExposure: exposure }}
       camera={{ position: [0, 0, 15], fov: 45 }}
       className={clsx("w-full h-full relative", className)}
     >

@@ -14,14 +14,14 @@ export default function Home() {
           fill
           sizes="100vw"
           priority
-          className="object-cover object-center opacity-100"
+          className="object-cover object-center opacity-50"
         />
       </div>
 
       <div className="relative w-full min-h-screen flex flex-col items-center justify-center">
         <div className="w-full h-[60vh] md:h-[70vh]">
-          <RenderModel ambientIntensity={0} environmentIntensity={0}>
-            <NoodleShop scale={1.2} />
+          <RenderModel ambientIntensity={1} environmentIntensity={0} exposure={1} environmentPreset="night">
+            <NoodleShop scale={1.2} position={[0, -.2, 0]} />
           </RenderModel>
         </div>
 

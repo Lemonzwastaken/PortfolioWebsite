@@ -15,7 +15,7 @@ export default function Home() {
           fill
           sizes="100vw"
           priority
-          className="object-cover object-center opacity-100"
+          className="object-cover object-center opacity-50"
         />
       </div>
 

@@ -2,7 +2,7 @@ import Image from "next/image";
 import bg from "../../public/background/home-background.png";
 import RenderModel from "@/components/RenderModel";
 import Navigation from "@/components/Navigation";
-import City from "@/components/models/City";
+import { ArcadeUnit } from "@/components/models/ArcadeUnit";
 
 export default function Home() {
   return (
@@ -13,15 +13,19 @@ export default function Home() {
         fill
         sizes="100vw"
         priority
-        className="object-cover object-center opacity-100 -z-10"
+        className="object-cover object-center opacity-50 -z-10"
       />
 
       <div className="w-full h-screen relative">
         <Navigation />
 
         <div className="absolute inset-0 pointer-events-none">
-          <RenderModel>
-            <City />
+          <RenderModel ambientIntensity={1} environmentIntensity={0} exposure={1} environmentPreset="sunset">
+            <ArcadeUnit
+            position={[0,-2.6,0]}
+            rotation={[0.523598776 ,0,0]}
+            scale={0.4}
+            />
           </RenderModel>
         </div>
       </div>
