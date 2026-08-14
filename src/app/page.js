@@ -24,7 +24,7 @@ export default function Home() {
 
         <div className="absolute inset-0 pointer-events-none">
           <RenderModel ambientIntensity={1} environmentIntensity={0} exposure={1} environmentPreset="sunset">
-            <Bounds fit clip observe margin={1.2}>
+            <Bounds fit clip observe margin={0.9}>
               <ArcadeUnit rotation={[0.523598776, 0, 0]} />
             </Bounds>
           </RenderModel>

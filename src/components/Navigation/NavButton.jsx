@@ -66,7 +66,7 @@ const NavButton = ({ x, y, label, link, icon, newTab }) => {
     </div>
     :
     <div
-        className="top-0 left-0 cursor-pointer z-50 pointer-events-auto"
+        className="absolute top-1/2 left-1/2 cursor-pointer z-50 pointer-events-auto"
         style={{ transform: `translate(-50%, -50%) translate(${x}, ${y})` }}
     >
         <div>

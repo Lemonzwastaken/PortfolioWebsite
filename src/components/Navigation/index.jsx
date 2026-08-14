@@ -39,15 +39,19 @@ const Navigation = () => {
             </div>
           ) : (
             <>
-              <div className="fixed left-8 top-1/2 -translate-y-1/2 flex flex-col gap-6 pointer-events-auto">
+              <div className="fixed left-8 top-1/2 -translate-y-1/2 flex flex-col gap-5 pointer-events-auto">
                 {BtnList.slice(0, BtnList.length / 2).map((btn) => (
-                  <NavButton key={btn.label} x="0px" y="0px" {...btn} />
+                  <div key={btn.label} className="relative w-14 h-14">
+                    <NavButton x="0px" y="0px" {...btn} />
+                  </div>
                 ))}
               </div>
 
-              <div className="fixed right-8 top-1/2 -translate-y-1/2 flex flex-col gap-6 pointer-events-auto">
+              <div className="fixed right-8 top-1/2 -translate-y-1/2 flex flex-col gap-5 pointer-events-auto">
                 {BtnList.slice(BtnList.length / 2).map((btn) => (
-                  <NavButton key={btn.label} x="0px" y="0px" {...btn} />
+                  <div key={btn.label} className="relative w-14 h-14">
+                    <NavButton x="0px" y="0px" {...btn} />
+                  </div>
                 ))}
               </div>
             </>
