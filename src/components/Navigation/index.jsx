@@ -4,6 +4,17 @@ import React from 'react'
 import { BtnList } from '@/app/data';
 import NavButton from './NavButton';
 import ResponsiveComponent from '../ResponsiveComponent';
+import { motion } from 'framer-motion';
+
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3,
+    }
+  }
+}
 
 const Navigation = () => {
 
@@ -21,7 +32,15 @@ const Navigation = () => {
 
           return size && size >= 480 ? (
             <div className='relative w-0 h-0' style={{ transform: `translate(${offsetX}, ${offsetY})` }}>
-              <div className='w-0 h-0 animate-spin-slow hover:pause group'>
+              <motion.div
+
+
+              variants={container}
+              initial="hidden"
+              animate="show"
+
+                className='w-0 h-0 animate-spin-slow hover:pause group'
+              >
                 {BtnList.map((btn, index) => {
 
                   const angleRad = (index * angleIncrement * Math.PI) / 180;
@@ -35,11 +54,14 @@ const Navigation = () => {
 
                   return <NavButton key={btn.label} x={x} y={y} {...btn} />;
                 })}
-              </div>
+              </motion.div>
             </div>
           ) : (
             <>
-              <div
+              <motion.div
+              variants={container}
+              initial="hidden"
+              animate="show"
                 className="fixed top-0 h-screen py-20 flex flex-col justify-between pointer-events-auto"
                 style={{ left: 'max(2rem, env(safe-area-inset-left))' }}
               >
@@ -48,9 +70,12 @@ const Navigation = () => {
                     <NavButton x="0px" y="0px" side="left" {...btn} />
                   </div>
                 ))}
-              </div>
+              </motion.div>
 
-              <div
+              <motion.div
+              variants={container}
+              initial="hidden"
+              animate="show"
                 className="fixed top-0 h-screen py-20 flex flex-col justify-between pointer-events-auto"
                 style={{ right: 'max(2rem, env(safe-area-inset-right))' }}
               >
@@ -59,7 +84,7 @@ const Navigation = () => {
                     <NavButton x="0px" y="0px" side="right" {...btn} />
                   </div>
                 ))}
-              </div>
+              </motion.div>
             </>
           );
         }}

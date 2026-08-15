@@ -2,6 +2,8 @@ import React from "react";
 import Link from "next/link";
 import { Disc, Github, HomeIcon, Linkedin, NotebookText, Palette, Phone, UserIcon } from "lucide-react";
 import ResponsiveComponent from "../ResponsiveComponent";
+import { motion } from "framer-motion";
+
 
 const getIcon = (icon) => {
     switch (icon) {
@@ -27,6 +29,13 @@ const getIcon = (icon) => {
     }
 }
 
+const item= {
+    hidden: {scale: 0},
+    show: {scale: 1}
+}
+
+const NavLink = motion(Link)
+
 const NavButton = ({ x, y, label, link, icon, newTab, side = "left" }) => {
     return (
     <ResponsiveComponent>
@@ -40,7 +49,8 @@ const NavButton = ({ x, y, label, link, icon, newTab, side = "left" }) => {
         style={{ transform: `translate(-50%, -50%) translate(${x}, ${y})` }}
     >
         <div>
-            <Link
+            <NavLink
+            variants={item}
                 href={link}
                 target={newTab ? '_blank' : '_self'}
                 className='text-foreground group rounded-full flex items-center justify-center
@@ -61,7 +71,7 @@ const NavButton = ({ x, y, label, link, icon, newTab, side = "left" }) => {
 
 
                 </span>
-            </Link>
+            </NavLink>
         </div>
     </div>
     :
@@ -70,7 +80,8 @@ const NavButton = ({ x, y, label, link, icon, newTab, side = "left" }) => {
         style={{ transform: `translate(-50%, -50%) translate(${x}, ${y})` }}
     >
         <div>
-            <Link
+            <NavLink
+            variants={item}
                 href={link}
                 target={newTab ? '_blank' : '_self'}
                 className='text-foreground group rounded-full flex items-center justify-center
@@ -91,7 +102,7 @@ const NavButton = ({ x, y, label, link, icon, newTab, side = "left" }) => {
 
 
                 </span>
-            </Link>
+            </NavLink>
         </div>
     </div>
 
