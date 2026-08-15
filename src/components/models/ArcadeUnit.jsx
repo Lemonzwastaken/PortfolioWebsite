@@ -14,7 +14,7 @@ export function ArcadeUnit({ scale = 0.5, ...props }) {
 
   const [isDragging, setIsDragging] = useState(false)
   const previousPointer = useRef({ x: 0, y: 0 })
-  const dragRotation = useRef({ x: 0, y: 0 })
+  const dragRotation = useRef({ x: 0.6, y: 0 })
 
   const handlePointerDown = (e) => {
     e.stopPropagation()

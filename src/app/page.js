@@ -6,6 +6,7 @@ import RenderModel from "@/components/RenderModel";
 import Navigation from "@/components/Navigation";
 import { ArcadeUnit } from "@/components/models/ArcadeUnit";
 import { Bounds } from "@react-three/drei";
+import ResponsiveComponent from "@/components/ResponsiveComponent";
 
 export default function Home() {
   return (
@@ -24,9 +25,17 @@ export default function Home() {
 
         <div className="absolute inset-0 pointer-events-none">
           <RenderModel ambientIntensity={1} environmentIntensity={0} exposure={1} environmentPreset="sunset">
-            <Bounds fit clip observe margin={0.9}>
-              <ArcadeUnit rotation={[0.523598776, 0, 0]} />
-            </Bounds>
+            <ResponsiveComponent>
+              {({ size }) => {
+                const isSmall = size && size < 480;
+
+                return (
+                  <Bounds key={isSmall ? 'mobile' : 'desktop'} fit clip observe margin={isSmall ? 0.9 : 2}>
+                    <ArcadeUnit />
+                  </Bounds>
+                );
+              }}
+            </ResponsiveComponent>
           </RenderModel>
         </div>
       </div>

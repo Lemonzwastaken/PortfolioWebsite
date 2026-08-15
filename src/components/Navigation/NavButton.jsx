@@ -27,7 +27,7 @@ const getIcon = (icon) => {
     }
 }
 
-const NavButton = ({ x, y, label, link, icon, newTab }) => {
+const NavButton = ({ x, y, label, link, icon, newTab, side = "left" }) => {
     return (
     <ResponsiveComponent>
 {({size}) => {
@@ -84,8 +84,8 @@ const NavButton = ({ x, y, label, link, icon, newTab }) => {
                     
                     <span className="peer bg-transparent absolute top-0 left-0 w-full h-full"/>
 
-                    <span className="absolute hidden peer-hover:block px-2 py-1 left-full mx-2 top-1/2 -translate-y-1/2 bg-background text-foreground
-                    text-sm rounded-md shadow-lg whitespace-nowrap">
+                    <span className={`absolute block px-2 py-1 top-1/2 -translate-y-1/2 bg-background text-foreground
+                    text-xs rounded-md shadow-lg whitespace-nowrap ${side === "right" ? "right-full mr-2" : "left-full ml-2"}`}>
                     {label}
                     </span>
 
