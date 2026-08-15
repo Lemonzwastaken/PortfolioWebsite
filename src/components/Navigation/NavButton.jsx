@@ -1,9 +1,9 @@
+"use client"
 import React from "react";
 import Link from "next/link";
 import { Disc, Github, HomeIcon, Linkedin, NotebookText, Palette, Phone, UserIcon } from "lucide-react";
 import ResponsiveComponent from "../ResponsiveComponent";
 import { motion } from "framer-motion";
-
 
 const getIcon = (icon) => {
     switch (icon) {

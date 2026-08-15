@@ -3,12 +3,12 @@
 import { motion } from "framer-motion";
 import clsx from "clsx";
 
-const ItemLayout = ({ children, className = "" }) => {
+const ItemLayout = ({ children, className }) => {
     return (
         <motion.div
             initial={{ scale: 0 }}
             whileInView={{ scale: 1 }}
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: false, amount: 0.2 }}
             transition={{ duration: 0.5 }}
             className={clsx(
                 "relative p-8 flex items-center",

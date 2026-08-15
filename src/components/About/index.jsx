@@ -1,20 +1,47 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 const HACKATIME_USERNAME = "30686";
 
-const Card = ({ children, className = "" }) => {
+const Card = ({ children, className = "", delay = 0 }) => {
     return (
-        <div
+        <motion.div
+            initial={{
+                opacity: 0,
+                y: 40,
+                scale: 0.94,
+            }}
+            whileInView={{
+                opacity: 1,
+                y: 0,
+                scale: 1,
+            }}
+            viewport={{
+                once: true,
+                amount: 0.15,
+            }}
+            transition={{
+                duration: 0.6,
+                delay,
+                ease: [0.22, 1, 0.36, 1],
+            }}
+            whileHover={{
+                y: -4,
+                transition: {
+                    duration: 0.2,
+                },
+            }}
             className={`relative p-8 flex items-center bg-black/30 backdrop-blur-sm border border-amber-400/20 rounded-lg transition-colors duration-300 hover:border-amber-400/50 ${className}`}
         >
             <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-amber-400/50 to-transparent" />
 
             {children}
-        </div>
+        </motion.div>
     );
 };
+
 
 const HackatimeStats = () => {
     const [stats, setStats] = useState(null);
@@ -101,143 +128,154 @@ const HackatimeStats = () => {
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-6xl mx-auto px-4 mb-6">
 
-            {/* ========================= */}
-            {/* MOST USED LANGUAGES */}
-            {/* ========================= */}
+            <Card
+                className="flex-col items-start"
+                delay={0}
+            >
+                <div className="w-full">
 
-            <Card className="flex-col items-start">
+                    <p className="text-amber-400 text-2xl font-semibold mb-6 font-mono">
+                        Most Used Languages
+                    </p>
 
-                <p className="text-amber-400 text-2xl font-semibold mb-6 font-mono">
-                    Most Used Languages
-                </p>
+                    <div className="flex flex-col gap-4 w-full">
 
-                <div className="flex flex-col gap-4 w-full">
+                        {languages.length === 0 ? (
+                            <p className="text-white/40 font-mono text-sm">
+                                No language data available.
+                            </p>
+                        ) : (
+                            languages.map((language, index) => {
 
-                    {languages.length === 0 ? (
-                        <p className="text-white/40 font-mono text-sm">
-                            No language data available.
-                        </p>
-                    ) : (
-                        languages.map((language, index) => {
+                                const percent =
+                                    Number(language.percent) || 0;
 
-                            const percent =
-                                Number(language.percent) || 0;
+                                return (
+                                    <div
+                                        key={`${language.name}-${index}`}
+                                        className="w-full"
+                                    >
 
-                            return (
-                                <div
-                                    key={`${language.name}-${index}`}
-                                    className="w-full"
-                                >
+                                        <div className="flex justify-between text-sm font-mono text-white/70 mb-1">
 
-                                    <div className="flex justify-between text-sm font-mono text-white/70 mb-1">
+                                            <span>
+                                                {language.name ||
+                                                    "Unknown"}
+                                            </span>
 
-                                        <span>
-                                            {language.name}
-                                        </span>
+                                            <span>
+                                                {percent.toFixed(2)}%
+                                            </span>
 
-                                        <span>
-                                            {percent.toFixed(2)}%
-                                        </span>
+                                        </div>
+
+                                        <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+
+                                            <motion.div
+                                                initial={{
+                                                    width: 0,
+                                                }}
+                                                whileInView={{
+                                                    width: `${Math.min(
+                                                        Math.max(
+                                                            percent,
+                                                            0
+                                                        ),
+                                                        100
+                                                    )}%`,
+                                                }}
+                                                viewport={{
+                                                    once: true,
+                                                }}
+                                                transition={{
+                                                    duration: 1,
+                                                    delay:
+                                                        0.2 +
+                                                        index * 0.1,
+                                                    ease: "easeOut",
+                                                }}
+                                                className="h-full bg-amber-400 rounded-full"
+                                            />
+
+                                        </div>
 
                                     </div>
+                                );
+                            })
+                        )}
 
-                                    <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-
-                                        <div
-                                            className="h-full bg-amber-400 rounded-full transition-all duration-700"
-                                            style={{
-                                                width: `${Math.min(
-                                                    percent,
-                                                    100
-                                                )}%`,
-                                            }}
-                                        />
-
-                                    </div>
-
-                                </div>
-                            );
-                        })
-                    )}
+                    </div>
 
                 </div>
-
             </Card>
 
+            <Card
+                className="flex-col items-start"
+                delay={0.1}
+            >
+                <div className="w-full">
 
-            {/* ========================= */}
-            {/* HACKATIME STATS */}
-            {/* ========================= */}
+                    <p className="text-amber-400 text-2xl font-semibold mb-6 font-mono">
+                        Hackatime Stats
+                    </p>
 
-            <Card className="flex-col items-start">
-
-                <p className="text-amber-400 text-2xl font-semibold mb-6 font-mono">
-                    Hackatime Stats
-                </p>
-
-                <div className="flex flex-col gap-4 font-mono text-white/80 w-full">
-
-                    {/* TOTAL TIME */}
-
-                    <div className="flex justify-between gap-4">
-
-                        <span className="text-white/50">
-                            Total Time:
-                        </span>
-
-                        <span>
-                            {stats.human_readable_total}
-                        </span>
-
-                    </div>
+                    <div className="flex flex-col gap-4 font-mono text-white/80 w-full">
 
 
-                    {/* DAILY AVERAGE */}
+                        <div className="flex justify-between gap-4">
 
-                    <div className="flex justify-between gap-4">
+                            <span className="text-white/50">
+                                Total Time:
+                            </span>
 
-                        <span className="text-white/50">
-                            Daily Average:
-                        </span>
+                            <span>
+                                {stats.human_readable_total ||
+                                    "—"}
+                            </span>
 
-                        <span>
-                            {stats.human_readable_daily_average}
-                        </span>
+                        </div>
 
-                    </div>
+                        <div className="flex justify-between gap-4">
 
+                            <span className="text-white/50">
+                                Daily Average:
+                            </span>
 
-                    {/* STREAK */}
+                            <span>
+                                {stats.human_readable_daily_average ||
+                                    "—"}
+                            </span>
 
-                    <div className="flex justify-between gap-4">
+                        </div>
 
-                        <span className="text-white/50">
-                            Current Streak:
-                        </span>
+                        <div className="flex justify-between gap-4">
 
-                        <span>
-                            {stats.streak ?? 0} days
-                        </span>
+                            <span className="text-white/50">
+                                Current Streak:
+                            </span>
 
-                    </div>
+                            <span>
+                                {stats.streak ?? 0} days
+                            </span>
 
+                        </div>
 
-                    {/* DATE RANGE */}
+                        <div className="flex justify-between gap-4">
 
-                    <div className="flex justify-between gap-4">
+                            <span className="text-white/50">
+                                Tracking:
+                            </span>
 
-                        <span className="text-white/50">
-                            Tracking:
-                        </span>
+                            <span>
+                                {stats.human_readable_range ||
+                                    "All Time"}
+                            </span>
 
-                        <span>
-                            {stats.human_readable_range}
-                        </span>
+                        </div>
 
                     </div>
 
                 </div>
-
             </Card>
 
         </div>
@@ -249,16 +287,18 @@ const AboutDetails = () => {
     return (
         <section className="py-20 w-full">
 
+
             <HackatimeStats />
 
             <div className="max-w-6xl mx-auto px-4 flex flex-col gap-6">
 
-                {/* INFO + EXPERIENCE */}
-
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full items-stretch">
 
-                    <Card className="md:col-span-2">
 
+                    <Card
+                        className="md:col-span-2"
+                        delay={0}
+                    >
                         <div className="font-mono text-white/90 w-full">
 
                             <p className="text-amber-400 text-2xl font-semibold mb-4">
@@ -270,14 +310,14 @@ const AboutDetails = () => {
                             </p>
 
                         </div>
-
                     </Card>
-
 
                     <div className="flex flex-col gap-6">
 
-                        <Card className="flex-1">
-
+                        <Card
+                            className="flex-1"
+                            delay={0.1}
+                        >
                             <div>
 
                                 <p className="text-amber-400 text-4xl font-bold">
@@ -289,12 +329,13 @@ const AboutDetails = () => {
                                 </p>
 
                             </div>
-
                         </Card>
 
 
-                        <Card className="flex-1">
-
+                        <Card
+                            className="flex-1"
+                            delay={0.2}
+                        >
                             <div>
 
                                 <p className="text-amber-400 text-4xl font-bold">
@@ -306,46 +347,40 @@ const AboutDetails = () => {
                                 </p>
 
                             </div>
-
                         </Card>
 
                     </div>
 
                 </div>
 
-
-                {/* TECH STACK */}
-
-                <Card className="w-full">
-
+                <Card
+                    className="w-full"
+                    delay={0.1}
+                >
                     <img
                         className="w-full h-auto"
                         src="https://skillicons.dev/icons?i=c,cpp,css,blender,git,github,py,unreal,visualstudio,vscode"
                         alt="Tech stack"
                         loading="lazy"
                     />
-
                 </Card>
 
-
-                {/* GITHUB STREAK */}
-
-                <Card className="w-full !p-6">
-
+                <Card
+                    className="w-full !p-6"
+                    delay={0.15}
+                >
                     <a
                         href="https://git.io/streak-stats"
                         target="_blank"
                         rel="noopener noreferrer"
+                        className="w-full flex justify-center"
                     >
-
                         <img
-                            className="w-full h-auto"
+                            className="w-full max-h-[300px] object-contain"
                             src="https://streak-stats.demolab.com?user=lemonzwastaken&theme=dark&hide_border=true&background=EB545400&ring=FEFE5B&currStreakNum=FEFE5B"
                             alt="GitHub Streak"
                         />
-
                     </a>
-
                 </Card>
 
             </div>

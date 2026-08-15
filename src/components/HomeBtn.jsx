@@ -3,10 +3,19 @@
 import React from "react";
 import Link from "next/link";
 import { Home } from "lucide-react";
+import { motion } from "framer-motion";
 
+
+const NavLink = motion(Link)
 const HomeBtn = ({ link = "/", newTab = false, icon, ariaLabel = "home" }) => {
   return (
-    <Link
+    <NavLink
+
+    initial={{scale:0}}
+    animate={{scale:1}}
+    transition={{delay:1}}
+
+
       href={link}
       target={newTab ? "_blank" : "_self"}
       className="text-foreground rounded-full flex items-center justify-center custom-bg fixed top-4 left-4 w-fit self-start z-[100] pointer-events-auto"
@@ -25,7 +34,7 @@ const HomeBtn = ({ link = "/", newTab = false, icon, ariaLabel = "home" }) => {
           home
         </span>
       </span>
-    </Link>
+    </NavLink>
   );
 };
 
