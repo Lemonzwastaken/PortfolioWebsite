@@ -305,7 +305,13 @@ const AboutDetails = () => {
                             </p>
 
                             <p className="text-base leading-relaxed text-white/70">
-                                more info here :p
+                                I’m a game developer and music enthusiast who likes turning random ideas
+                                into things you can actually play, see, or hear.
+                                <br /><br />
+                                This is where I put the stuff I’ve made, the stuff I’m making, and the
+                                occasional questionable decision that somehow became a feature.
+                                <br /><br />
+                                Welcome to my little corner of the internet.
                             </p>
 
                         </div>
@@ -320,11 +326,11 @@ const AboutDetails = () => {
                             <div>
 
                                 <p className="text-amber-400 text-4xl font-bold">
-                                    4+
+                                    2+
                                 </p>
 
                                 <p className="text-white/60 text-sm tracking-widest uppercase mt-1">
-                                    Years Experience
+                                    Years Coding
                                 </p>
 
                             </div>
@@ -338,11 +344,11 @@ const AboutDetails = () => {
                             <div>
 
                                 <p className="text-amber-400 text-4xl font-bold">
-                                    25+
+                                    15+
                                 </p>
 
                                 <p className="text-white/60 text-sm tracking-widest uppercase mt-1">
-                                    Clients Served
+                                    Projects Shipped :D
                                 </p>
 
                             </div>
