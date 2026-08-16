@@ -4,6 +4,9 @@ A personal developer portfolio built with Next.js and Three.js, inspired by webs
 
 **Live site:** [WebsiteLink](https://portfolio-website-blush-seven-78.vercel.app/)
 
+Time Spent: ![HackatimeTime](https://hackatime.hackclub.com/api/v1/badge/U092BLMKNQN/Lemonzwastaken/PortfolioWebsite)
+
+
 ## Cool Stuff I made
 
 - **Interactive 3D models**: Cool draggable 3D model :D
