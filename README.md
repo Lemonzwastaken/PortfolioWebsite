@@ -10,7 +10,7 @@ A personal developer portfolio built with Next.js and Three.js, inspired by webs
 - **Rotating icons**: Cool spinny icons
 - **Page transitions**: animated fade between routes via Next.js's `template.js`
 - **Contact form**: Send messages to my email via emailjs
-- **Cool music**: optional background music with a persistent on/off control, music made by me ofcourse
+- **Cool music**: optional background music with a on/off control, music made by me ofcourse
 
 ## Tech Stack
 
