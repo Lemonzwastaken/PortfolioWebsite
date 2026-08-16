@@ -21,7 +21,13 @@
 @layer utilities {
   .pause{
     animation-play-state: paused;
+    .hide-native-cursor,
+    .hide-native-cursor * {
+      cursor: none !important;
+    }
+
   }
+
 
 .custom-bg{
   @apply bg-background/20 border border-accent/30 border-solid backdrop-blur-[6px]
@@ -64,3 +70,4 @@
   scrollbar-width: thin;
   scrollbar-color: rgba(251, 191, 36, 0.45) #080808;
 }
+
