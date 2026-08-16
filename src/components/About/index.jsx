@@ -96,10 +96,9 @@ const HackatimeStats = () => {
                     <p className="text-amber-400 text-2xl font-semibold font-mono">
                         Hackatime Stats
                     </p>
-
-                    <p className="text-white/50 font-mono text-sm mt-4">
-                        Couldn't load Hackatime stats.
-                    </p>
+                        <p className="text-white/50 font-mono text-sm mt-4">
+                            Couldn&apos;t load Hackatime stats.
+                        </p>
                 </Card>
             </div>
         );
