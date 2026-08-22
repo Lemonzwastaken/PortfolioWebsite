@@ -6,15 +6,6 @@ A personal developer portfolio built with Next.js and Three.js, inspired by webs
 
 Time Spent: ![HackatimeTime](https://hackatime.hackclub.com/api/v1/badge/U092BLMKNQN/Lemonzwastaken/PortfolioWebsite)
 
-
-## Cool Stuff I made
-
-- **Interactive 3D models**: Cool draggable 3D model :D
-- **Rotating icons**: Cool spinny icons
-- **Page transitions**: animated fade between routes via Next.js's `template.js`
-- **Contact form**: Send messages to my email via emailjs
-- **Cool music**: optional background music with a on/off control, music made by me ofcourse
-
 ## Tech Stack
 
 | Category | Tools |
